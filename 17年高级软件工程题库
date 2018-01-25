@@ -1,0 +1,663 @@
+一、	概念解释
+
+1.	敏捷开发方法 与 Scrum方法
+敏捷开发方法是以用户的需求进化为核心,采用迭代,循序渐进的方法进行软件开发,
+    Scrum是跨职能团队以迭代、增量的方式开发产品或项目的一种开发框架。它把开发组织成被称为Sprint的工作周期。这些迭代每个都不超过4周（最常见的是两周），并且无间歇地相继进行。
+2.	基于计划-文档开发方法
+
+3.	DRY（Don’t Repeat yourself）无重复代码
+  在进行编程时相同的代码不要重复写，最好只写一次，然后可以在其他地方直接引用。如此一来，可以提高代码重用率，缩减代码量，同时也有助于提高代码的可读性和可维护性。当需要做出更改时，只需要更改一个地方即可。
+
+4.	MVC
+是模型(model)－视图(view)－控制器(controller)的缩写，一种软件设计典范，用一种业务逻辑、数据、界面显示分离的方法组织代码，控制器接收用户的请求，并决定应该调用哪个模型（model）来进行处理。然后模型根据用户请求进行相应的业务逻辑处理，并返回数据。最后控制器调用相应的视图（view）格式化模型返回的数据，并通过视图（view）呈现给用户。 
+
+5.	SMART 用户故事
+a)	User Story用来定义功能需求，用来帮助定义用户用例，用来定义交替使用的用例
+b)	判断一个User Story好坏的标准：
+i.	确定性（Specific）
+ii.	可评估（Measurable）
+iii.	可实现（Achievable）
+iv.	相关性（Relevant）
+v.	时间限制（Time boxed）
+c)	五个为什么是一种帮助你探索发现User Story的真正商业相关性的方法
+6.	TDD and 红-绿重构
+a)	测试驱动开发（TDD）循环又被成为红色-绿色-重构
+b)	TDD的红色-绿色-重构周期从写一个测试开始，因为它测试的主体代码还不存在，所以会失败（红色）。然后，添加最少的必要代码来使它通过这个测试例子（绿色）
+c)	一个红色-绿色-重构的例子
+i.	在你写任何新的代码前，写一个这段代码行为应当由的在某个方面的测试。由于被测试的代码还不存在，写下测试迫使你思考想要代码如何表现，以及与可能存在的协作者如何交互。我们把这种方法叫做“检测你想要的代码”
+ii.	红色步骤：运行测试，并确认它失败了，因为你还没有实现能让它通过测试的代码。
+iii.	绿色步骤：写出能使这个测试通过但不损坏其它已有的测试的尽可能简单的代码。
+iv.	重构步骤：寻找重构代码或测试的机会——改变代码的结构来消除冗余、重复或其他可能由添加新代码而引起的丑陋现象。测试能保证重构不会产生错误。
+v.	重复以上步骤指导所有必须通过情景步骤的行为都完成。
+
+7.	FIRST 测试原则
+（1）	F Fast（快速的）: 测试要快速，快到程序员可以在每个微小的改动后都运行它们而且不会打断工作流。
+（2）	I Independent（独立的）: 测试用例要是独立的。一个测试不会为另一个测试创建环境。测试中的失败也要分离开。
+（3）	R Repeatable （可重复的）: 测试要可以重复地去运行。可重复意味着自动化。一个循环中的测试总是给出同样的结果。
+（4）	S Self-verifying（自校验的）: 测试会自己检查产出，通过时只给出简单的“OK”，失败时给出详细的细节。
+（5）	T Timely（及时的）: 测试要及时做。程序员要及时写测试，与写产品代码紧连（但必须是在前面）来防止软件bug的产生。
+
+8.	代码味道及类内方法 SOFA原则（说明S、O、F、A分别代表什么？违法该原则的代码的不好特征、重构和修复的方法）
+a)	在编写代码时，软件度量（software metrics）和代码味道（code smell）能够识别难以阅读的代码。通过重构进行的转换能够提高软件度量并且消除代码味道。方法应该是简短的，只需要做一件事情且只有少量参数，并且维护一个但层次的抽象（SOFA）。
+b)	我们可以通过两种方法确定代码是否是“漂亮”的，即找出错误代码的方法：定量的软件度量以及定性的代码味道。
+c)	代码味道，即不易度量描述的源代码的结构特征。和真实气味一样，代码味道能将我们的注意力吸引到可能由问题的地方。
+d)	SOFA代表四种代码味道，代表了一个编写良好的方法应当有的特征：
+i.	保持简短（Short）：以便能迅速获取主要目的。
+ii.	只做一件（One）事情：以便测试能集中于彻底检查这一件事。
+iii.	输入少量（Few）的参数：以便非常重要的参数值组合都能被测试到。
+iv.	维持一个固定级别的抽象（Abstraction）：以便它不会在如何做和怎么做之间来回跳转。
+
+违法该原则的代码的不好特征、重构和修复的方法
+
+9.	类间关系的SOLID原则（说明每个原则的意义，违法该原则的代码的不好特征、重构和修复的方法）
+a)	单一功能原则（Single Responsibility Principle）：一个类应该有且只有一个责任；也就是说，只有一个改变的原因。方法缺乏内聚性（Lack of Cohesion of Method）这一度量表示了一个庞大的类这种反模式。
+
+不好特征：多人同时修改（维护）同一个类的现象，而且成员之间的沟通不够及时，主动和畅通的话，那么时间一长，就很可能出现“承担过多职责”的上帝类；
+重构和修复方法：提炼基类/接口和提炼类重构将能帮助我们消除或减轻这种设计臭味
+
+b)	开闭原则（Open/Close　Principle）：一个类应该对扩展保持开发性，但是对修改保持封闭性。Case选择语句（Case　Statement）设计味道意味着对该原则的违背。
+不好的特征：对扩展开放，对修改闭合
+重构和修复方法：为服务器端的代码（类型）抽象出一个抽象基类（定义一组完成服务职责的最小接口）      
+定义一个新的实现而不需要修改任何客户端代码
+c)	里氏代换原则（Liskov Substitution Principle）：一个为类型Ｔ设计的方法应该对Ｔ的子类起作用。也就是说，类型Ｔ的所有子类都应该保持Ｔ的“功能”。拒绝的继承（refused　bequest）设计闻到指示了对该原则的违背。
+•	不好特征：类继承就会混乱；如果子类作为一个参数传递给方法，将会出现未知行为；
+•	适用与基类的单元测试将不能成功用于测试子类；
+•	重构和修复的方法：重构，子类型必须能够替换它们的基类型
+
+d)	依赖注入原则（Dependency　Injection　Principle）：如果两个类彼此依赖，但是其实现可能会改变，那么依赖于一个可以“注入”到它们中的一个单独抽象层会更好。
+       不好特征：高层模块依赖底层模块
+       重构和修复方法：高层模块不应该依赖底层模块，两者都应该依赖其抽象
+e)	迪米特法则（Demeter Principle）：一个方法能够调用自己类内的其他方法，以及该类实例变量的类中的方法；其他的都是被禁止的。违背此原则的一个设计味道就是不合适的亲密。
+不好特征：对象间过于亲密，耦合性高
+重构和修复方法：
+
+10． 持续集成及开发
+
+持续集成指的是，频繁地（一天多次）将代码集成到主干。
+好处主要有两个:
+（1）快速发现错误。每完成一点更新，就集成到主干，可以快速发现错误，定位错误也比较容易。
+（2）防止分支大幅偏离主干。如果不是经常集成，主干又在不断更新，会导致以后集成的难度变大，甚至难以集成。
+持续集成的目的，就是让产品可以快速迭代，同时还能保持高质量。它的核心措施是，代码集成到主干之前，必须通过自动化测试。只要有一个测试用例失败，就不能集成。
+
+
+三、设计题
+ 
+
+题意描述有问题，已和助教确认，问题是求，这四种类型的继承关系
+
+
+
+
+1.	class Zyh  
+2.	  #a = 3344  
+3.	  # p a.ancestors # [Object, Integer, BasicObject, Numeric]  
+4.	  
+5.	    puts "以下类型的各种祖先类，分别为"  
+6.	  
+7.	    p Object.ancestors  
+8.	    p Integer.ancestors  
+9.	    p BasicObject.ancestors  
+10.	    p Numeric.ancestors  
+11.	    puts "输出这四种类型的祖先，由Interger的祖先类得出"  
+12.	    puts "Interger继承于Numeric，Numeric继承于Object，Object继承于BasicObject"  
+13.	end  
+
+输出：
+1.	以下类型的各种祖先类，分别为  
+2.	[Object, Kernel, BasicObject]  
+3.	[Integer, Numeric, Comparable, Object, Kernel, BasicObject]  
+4.	[BasicObject]  
+5.	[Numeric, Comparable, Object, Kernel, BasicObject]  
+6.	输出这四种类型的祖先，由Interger的祖先类得出  
+7.	Interger继承于Numeric，Numeric继承于Object，Object继承于BasicObject 
+
+ 
+1.	class IS  
+2.	  def self.is_palindrome(word)  
+3.	    if word==word.reverse()  # 判断是否回文  
+4.	      puts "#{word} is a palindrome."  
+5.	    else  
+6.	      puts  "#{word} is not a palindrome."  
+7.	    end  
+8.	  end  
+9.	end  
+10.	  
+11.	word = gets     # 输入字符串  
+12.	word = word.chomp  # 去掉"\n"  
+13.	word.gsub!(/\W/,"")  # 利用正则，去除非字母字符  
+14.	a = word.downcase  # 转换成小写字母  
+15.	IS.is_palindrome(a.chomp)  # 调用判断是否为回文的方法  
+ 
+ 
+(2)乘法除法
+
+class Calculator
+.....
+  def multiplication(num1, num2)
+    num1 * num2
+  end
+
+  def division(num1, num2)
+    num1 / num2
+  End
+End
+
+自动化测试：
+16.	require 'minitest/autorun'
+17.	require 'calculator'
+18.	class TestCalculator < Minitest::Test
+19.	  def setup
+20.	    @calc = Calculator.new
+21.	  end
+22.	
+23.	  def test_proper_multiplication
+24.	    assert_equal 9, @calc.multiplication(3, 3)
+25.	  end
+26.	
+27.	  def test_proper_division
+28.	    assert_equal 4, @calc.division(20, 5)
+29.	  End
+30.	end
+ 
+
+(1..20).inject([0,1]) {|result, element| result<< result.last(2).inject(:+) }
+
+
+
+四、简答题
+二、	简答题
+1.云计算解释，结合 Cloud9 的例子说明。
+1）相比传统自建数据中心而言，为什么云计算能以更低费用提供更多的计算资源？
+
+ 
+
+2）采用云计算，任何一个应用都能“无限地横向扩展”吗？为何可以或不可以？
+不能，横向扩展环境可能需要考虑新的应用设计方式而且可能无法承载遗留应用 
+
+2、三层无共享（Shared-Nothing）架构的解释（参照下面的图）。
+1） 哪三层？为何叫“无共享”
+哪三层没搜到 ?
+各个处理单元都有自己私有的CPU/内存/硬盘等，不存在共享资源。
+
+2） 该架构为何比较适合大规模的 SaaS 应用?
+Shared nothing体系是数据库稳定增长，当随着事务数量不断增加，增加额外的cpu和主存就可以保证每个事务处理时间不变。总的来说，shared nothing降低了竞争资源的等待时间，从而提高了性能。
+3） 相比其他层，哪一层是不容易横向扩展？为什么？
+不知道
+
+3、软件作为服务（SaaS）
+1） SaaS 与传统软件有什么不同?
+1.	开发模式与交互模式不同：传统软件依靠存储介质拷贝传播，需要安装使用时占用一定磁盘空间。而SaaS则是部署在服务器上，更新迭代较为方便，SaaS可以在手机、电脑等多平台接入系统进行操作。
+2.	盈利模式不同：购买传统软件一次性投入数额高昂的版权及维护费用等；而SaaS则是租赁制，按照服务的使用时长计费。
+3.	SaaS部署时间相对于传统软件更方便。
+4.	SaaS比传统软件适用的时间与空间更广。
+5.	数据安全性：传统的软件是安装在用户自己的服务器下的，相关的数据可控，而SaaS的数据是存放在厂商服务器上的，数据的隐私性以及安全性都将受到较大的考验。
+ 
+2）什么类型的软件不适合做成 Saas?为何?
+（1）对数据安全性上要求较高的。传统软件安装在用户自己的服务器下，相关数据可控，而SaaS，数据是存放在厂商服务器上的，数据的隐私性及安全性受到考验。
+  （2）对性能以及实时性响应要求较高的。例如大数据流量的应用程序，SaaS应用远程的特性使得网络瓶颈对此类应用程序的影响特别严重。性能也会根据用户的行为、供应商网络以及根据快速增长或者临时峰值的动态调节能力而有很大的不同。
+
+4、这个不会
+ 
+简答题第4题答案：
+响应时间：
+AJAX应用可以仅向服务器发送并取回必需的数据，它使用SOAP或其它一些基于XML的Web Service接口，并在客户端采用JavaScript处理来自服务器的响应。因为在服务器和浏览器之间交换的数据大量减少，结果我们就能看到响应更快的应用。同时很多的处理工作可以在发出请求的客户端机器上完成，所以Web服务器的处理时间也减少了。
+
+利用缓存：
+Ajax能将状态保存在客户端，从而实现常用资源，如重复使用的数据和源程序，可以有效被缓存和再利用。当Ajax第一次发送请求后，会把请求的URL和返回的响应结果保存在缓存内，当下一次调用Ajax发送相同的请求时，注意，这里相同的请求指的是URL完全相同，包括参数，浏览器就不会与服务器交互，而是直接从缓存中把数据取出来，这是为了提高页面的响应速度和用户体验。
+方案中Rails利用页面缓存：这样做的好处是，可以把一些经常访问的页面作为页面缓存。缺点是，这种页面不能有太多用户的个人信息，因为这个页面对所有人访问都是相同的内容。如果必须考虑个人信息，可以改为 js 形式，或者使用方法缓存（Action Cache）。
+
+数据源限制每个IP的API访问次数：
+AJAX最大优点就是能在不刷新整个页面的前提下与服务器通信维护数据。这使得Web应用程序更为迅捷地响应用户交互，并避免了在网络上发送那些没有改变的信息，减少用户等待时间，带来非常好的用户体验。
+
+可扩展性：
+Ajax先加载静态的东西，把动态的东西后加载，这种局部加载，因此Ajax具有很好的扩展性。
+
+
+4.5
+
+#!/usr/bin/env ruby
+
+if __FILE__ == $0
+  reg1=/hay/ =~ 'haystack' 
+  #Ruby的正则表达式以"//"作为构造方法,表达式返回一个RegExp的对象。 
+  reg2=/y/.match('haystack')
+  #String和RegExp均支持=~和match 2个查询匹配方法
+  #如果能够匹配，=~返回匹配的字符串位置，而match返回一个MatchData对象。如果不匹配返回nil
+  class Class
+    #记录Class的new方法的别名
+    alias old_new new
+    #定义新的new方法
+    def new(*args)
+      print "Creating a new ", self.name, "\n"
+      #调用旧的new方法
+      old_new(*args)
+    end
+  end
+
+  class MyName
+  end
+
+  MyName.new
+
+  puts reg1
+  puts reg2
+end
+
+#执行结果
+# Creating a new MyName
+# 0
+# y
+
+
+
+
+
+
+
+
+
+
+
+4.6
+
+#!/usr/bin/env ruby
+
+if __FILE__ == $0
+  class Interpreter
+    def do_a() print "there, "; end
+    def do_d() print "Hello "; end
+    def do_e() print "!\n"; end
+    def do_v() print "Dave"; end
+    Dispatcher = {
+      "a" => instance_method(:do_a),
+      "d" => instance_method(:do_d),
+      "e" => instance_method(:do_e),
+      "v" => instance_method(:do_v),
+    }
+    def interpret(string)
+      string.each_char{|b| Dispatcher[b].bind(self).call}
+    end
+  end
+  #老师的题目中没有下面两句，ruby 官网上面是有着两句的，在此我特地加上。
+  interpreter = Interpreter.new
+  interpreter.interpret('dave')
+end
+
+
+#执行结果
+# Hello there, Dave!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4.7
+
+#!/usr/bin/env ruby
+
+if __FILE__ == $0
+  a = 0
+  a += 1 if a.zero?
+  p a
+  a = 0
+  a += 1 unless a.zero? #unless 相当于 if not
+  p a
+end
+
+#执行结果
+# 1
+# 0
+
+4.8
+
+#!/usr/bin/env ruby
+
+if __FILE__ == $0
+  selected = []
+  0.upto 5 do |value|
+    selected << value if value==2..value==2
+  end
+  p selected
+
+#直到第一个表达式为true 之前 整个表达式的结果为false。
+#以上条件成立后，在第二个表达式为true 之前，表达式结果是true。
+
+  selected = []
+  0.upto 5 do |value|
+    selected << value if value==2...value==2
+  end
+  p selected
+#直到第一个表达式为true 之前 整个表达式的结果为false。
+#但是在变为true后，表达式不会在同一层迭代中立刻判断第二个表达式，而是等到下一层在进行判断
+#以上条件成立后，在第二个表达式为true 之前，表达式结果是true。
+
+end
+
+#执行结果
+# [2]
+# [2, 3, 4, 5]
+4.9
+
+#!/usr/bin/env ruby
+
+class MegaGreeter
+  attr_accessor :names
+  def initialize(names = "朋友") # 初始化這個物件
+    @names = names
+  end
+  def say_hi
+    if @names.nil?
+      puts "..."
+    elsif @names.respond_to?("each") # @names 是可以迭代的阵列容器
+      @names.each do |name|
+        puts "你好 #{name}!"
+      end
+    else
+      puts "你好 #{@names}!"
+    end
+  end
+
+  def say_bye
+    if @names.nil?
+      puts "..."
+    elsif @names.respond_to?("join") # 用逗号将阵列中的元素串接成一个字串
+      puts "再见 #{@names.join(", ")}.  快回吧!"
+    else
+      puts "再见 #{@names}.  快回吧!"
+    end
+  end
+
+end
+
+if __FILE__ == $0
+  mg = MegaGreeter.new
+  mg.say_hi
+  mg.say_bye
+
+  mg.names = "张三"
+  mg.say_hi
+  mg.say_bye
+
+  mg.names = ["张三", "李四", "王五",
+    "陈六", "赵七"]
+  mg.say_hi
+  mg.say_bye
+
+  mg.names = nil
+  mg.say_hi
+  mg.say_bye
+end
+#执行结果
+# 你好 朋友!
+# 再见 朋友.  快回吧!
+# 你好 张三!
+# 再见 张三.  快回吧!
+# 你好 张三!
+# 你好 李四!
+# 你好 王五!
+# 你好 陈六!
+# 你好 赵七!
+# 再见 张三, 李四, 王五, 陈六, 赵七.  快回吧!
+# ...
+# ...
+ 
+ 
+
+
+题目相关：
+
+ 
+
+12、已知一个用户拥有多篇微博，一篇微博属于一个用户，数据模型ER图和相应代码如下:
+请在上面的两个代码段的合适地方加入语句，(1)为 User 模型的 name 和 email 属性添 加存在性验证;(2)确保微博的内容不能为空存在性验证。
+答：
+（1）has_many…那行底下添加：
+validates :name, :email, presence: true
+（2）validates那行改为：
+validates :content, presence: { message: "微博内容不能为空" }, length: { maximum: 140 }
+
+13 
+ 
+14  
+ 
+知识点：
+自定义方法来创建 Ruby 对象
+您可以给方法 new 传递参数，这些参数可用于初始化类变量。
+当您想要声明带参数的 new 方法时，您需要在创建类的同时声明方法 initialize。
+initialize 方法是一种特殊类型的方法，将在调用带参数的类的 new 方法时执行。
+ 
+15
+ 
+Rails generate model User name:string,age:int,email:string.
+
+
+16
+ 
+add_column :User,:password,:string
+17.
+ 
+答：如果已经运行过存在错误的迁移，那么直接修正迁移中的错误并重新运行这个迁移并不能解决问题：Rails 知道这个迁移已经运行过，因此执行 rails db:migrate 任务时不会执行任何操作。必须先回滚这个迁移（例如通过执行 bin/rails db:rollback 任务），再修正迁移中的错误，然后执行 rails db:migrate 任务来运行这个迁移的正确版本。
+18.
+ 
+1/photos
+2Photos#new
+3POST
+4photos#show
+5photos/:id/edit
+6 photos#update
+7 DELETE
+
+http://blog.csdn.net/felomeng/article/details/16832091
+ 
+19
+ 
+答：
+validates :password, presence: true，length: { minimum: 6 }
+
+20
+ 
+class User < ActiveRecord::Base
+has_and_belongs_to_many :courses
+end
+class Course < ActiveRecord::Base
+has_and_belongs_to_many: users
+end
+21.
+ 
+答：user = User.new(name: "David", age:20,email: David@test.com,password:123456) 
+
+知识点：ruby on rails 第六章第二节 用户数据验证
+22
+ 
+@user=User.find_by(name: "David")
+user.update_attribute(:password, 66666)
+ruby on rails 第六章 第一节
+23
+ 
+last_user=User.last
+last_user.destroy
+24
+ 
+答案：当表单提交失败时，render避免了表单重复提交，并且保留了之前表单填写的client信息。
+当表单提交成功时，服务器接受到请求之后发出重定向，如果用户主动再次刷新页面，此时浏览器的请求链接是服务器重定向的URL，redirect_to可使表单不会被重复提交。
+25
+ 
+ 
+Book_path(book)
+Edit_book_path(book)
+Delete
+New_book_path
+
+26
+ 
+Form_for
+f.text_field
+email
+f.submit
+27
+ 
+ 
+@user.valid?
+Assert_not@user.valid?
+28
+ 
+Assert_template
+Assert_select
+29 
+ 
+D(不确定)
+30
+ 
+ 
+31   1
+32   1
+33   1
+34、 BDD 与 TDD 的主要区别
+A. BDD 关注确认功能是否符合用户需求，而 TDD 关注验证功能是否正确执行。
+B. BDD 关注验证功能是否正确执行，而 TDD 关注确认功能是否符合用户需求。
+C. BDD 独立测试类方法比 TDD 好。
+D. BDD 一般使用 mocks 和 stubs 比 TDD 多。
+答案：A
+BDD是Behavior-Driven Design，TDD则是Test-Driven Development，前者根据用户故事进行驱动设计，后者根据功能测试进去驱动开发。
+
+35、 一个 _____ 是指单个_____有一个或多个______,每一个包括一系列______
+A. feature, step, user stories, scenarios
+B. feature, scenario, steps, user stories
+C. user story, feature, scenarios, steps
+D. user story, scenario, features, steps
+答案：D
+一个用户故事是指单个场景有一个或多个特性,每一个特性包括一系列操作步骤。
+
+36、 请按测试的代码量和复杂程度有低到高排序。
+A. 单元测试, 功能或模块测试, 集成（综合）测试
+B. 集成（综合）测试, 功能或模块测试, 单元测试
+C. 单元测试, 集成（综合）测试, 功能或模块测试
+D. 功能或模块测试, 单元测试, 集成（综合）测试
+答案：C
+单元测试是程序最小测试单元集，是开发过程中开发者进行的测试。
+集成测试是在单元测试基础上，组合为子系统，然后进行测试，是文档中规范的测试。
+功能或模块测试（应该指系统测试），是系统发布前进行的最终测试。
+三者针对的是由小到大的测试情形，复杂度也是由简单道复杂。
+参考Engineering Software as a Service.pdf，320页。
+
+37、 In addition to automation tools, reuse, synthesis mechanism, which one is TRUE
+regarding software productivity?
+A. Clarity via conciseness
+B. Testing
+C. Refactoring
+D. Design pattern
+除了自动化工具、重用、合成机制，哪一个是关于软件生产力的？
+A.透明简洁
+B.测试
+C.重构
+D.设计模式
+答案：B
+
+个人理解透明是指代码的透明性，内部具体实现方法对外不公开。透明简洁是写代码的原则，与生产力无关。
+
+测试是开发过程中驱动开发进行的一个步骤，可以检查某个功能的正确性。可以通过测试驱动开发，提高生产力。
+
+重构是指修改之前写好的代码架构，重写相同或类似功能的代码，但是具有更好的结构。
+
+设计模式指代码所采用的通用框架，常用设计模式如工厂模式、单例模式、观察者模式等。（个人感觉好的代码框架会提高代码的可靠性、易读性，也会提高写代码效率，但是不是直接推动软件生产的）。
+
+38、 Which statement is TRUE regarding refactoring?
+A. Refactoring improves test coverage
+B. During refactoring, you should never have a failing test
+C. Improving code structure is a primary goal
+D. Refactoring always reduces the amount of code
+38、关于重构，下列陈述正确的是(    )
+A. 重构可以提高测试覆盖率
+B. 通过重构，你永远不会得到一个失败的测试
+C.改进代码结构是主要目标
+D.重构总是减少代码量
+答案：A
+解析：（课本315-318页）B.大多数重构方法不可避免地引起一些已有的测试失败。C重构过程的关键目的是最小化测试失败（红色）的时间总和。D重构不是总是减少代码量。
+39、 According to the Open/Closed Principle, a ____ should be open for ____ but closed
+against ____.
+A. class; extension; modification
+B. method; modification; polymorphism
+C. class; delegation; polymorphism
+D. method; stubbing; overriding
+39、根据开闭原则，____应该____开放，但是封闭反对 ____。
+A.类; 扩展; 修改
+B.方法; 修改;多态性
+C. 类; 委派;多态性
+D.方法;存根; 方法的重写
+答案：A 
+解析：（课本372页）开闭原则明确的告诉我们：软件实现应该对扩展开放，对修改关闭。
+40、The ability to perform a background request and update the HTML page in-place with  the response relies on:
+A. the browser having an embedded JavaScript interpreter
+B. the browser making the DOM available to JavaScript
+C. A JavaScript binding for XmlHttpRequest
+D. XML parsing in the browser
+E. JSON parsing in the browser
+40，能够执行后台请求，并根据响应就地更新HTML页面，依赖于：
+A.具有嵌入式JavaScript的浏览器
+B.浏览器使DOM可用于JavaScript
+C. JavaScript绑定了XmlHttpRequest 
+D.浏览器中的XML解析
+E. 浏览器中的JSON在解析
+答案：C
+解析：（参考网址XMLHttpRequest 对象http://www.w3school.com.cn/xml/xml_http.asp）XMLHttpRequest 对象用于在后台与服务器交换数据。XMLHttpRequest 对象是开发者的梦想，因为您能够：1.在不重新加载页面的情况下更新网页2.在页面已加载后从服务器请求数据3.在页面已加载后从服务器接收数据4.在后台向服务器发送数据。
+41.User stories should be SMART.SMART in the context of user stories means:
+用户故事的SMART指导原则的含义：
+（1）Specific确定性：对用户故事的描述必须是一个明确的具体的行为。
+如：用户能够搜索电影（不明确）；用户能够通过电影标题来搜索电影（明确）。
+（2）Measurable可评估：每个用户故事都是可以测试的，即每个合理的输入都有确定的预期结果。如：要有良好的性能（不可评估）；99%的页面要在3秒内呈现（可评估）
+（3）Achievable可实现：在一个敏捷周期内实现一个用户故事，如果用户故事难度太大，要拆分成小的用户故事。
+（4）Relevant相关性：一个用户故事必须对一个或多个涉众有商业价值，为了获取真正的商业价值，一种方法是多问“为什么”。如：“为什么要让观众享受？为什么想卖更多的电影票？为什么电影院要赚更多的钱？”
+（5）Timeboxed时间限制：如果超出时间预算，需要停止开发对应的故事。要么放弃，并将用户故事分割成更小的；要么做一个新的评估，重新规划时间，安排剩下的任务。
+42. 请仔细阅读上面的描述，为下面的功能写一个可信的用户故事和两个场景，并确保你的答案足够聪明：
+功能1: 在日期范围内搜索电影
+用户故事：作为一个电影爱好者，我想要通过日期来浏览电影，以便于我能快速找到我感兴趣的电影。
+场景1:用户在通过点击网页中的年份如2008，系统自动将2008年的所有电影在网页中展示出来
+场景2:用户通过手动输入年份区间如2001～2008，系统自动将这个区间的电影在网页中现实出来
+
+功能2:根据电影的发布日期来进行排序
+用户故事：作为一个网页浏览者，我想要根据电影发行日期来对电影进行排序，以便于我能观看最新发行的电影
+场景1:用户通过点击排序栏中的最近更新，系统将会对根据电影发布时间（从最近发布）来对电影进行排序，并展示在网页中
+场景2:用户连续点击两次最近更新，系统将会根据电影发布时间（从最早发布）来对电影排序，并展示在网页中
+
+
+本题目来自于课本7.4节 Lo-Fi User Interface Sketches and Storyboards
+
+题目解析：由于SaaS应用程序通常是面向终端用户的，书中该节介绍了如何使用“Lo-Fi”原型创建有用的用户界面。BDD任务的一部分就是构造一个UI来满足用户故事，例如如果用户故事包含用户登录，那么我们就需要做出一些用户登录的界面。
+//课本上对于添加电影这一界面就只是手绘了几个文本框和按钮如下图，另外根据其对lo-fi的解释就是铅笔就能画出的界面，因此我认为lo-fi原型的意思就是非常简单的手绘界面原型。
+ 
+而本题目为：Using Lo-Fi sketching, present a UI that matches the features given in 1，1应该是指的第42题的feature 1.绘制搜索某时间段电影的界面原型如下。
+ 
+
+44、左下图和右下图分别是两种设计方案。左下图是一个单一系统架构，三个子系统都采用统一
+的API（Bookstore Service）。右下图是一个面向服务设计架构， 三个子系统采用各自独立的
+API，请解释两个方案的优缺点，从功能升级和横向扩展等方面比较。
+答：单一系统架构
+    优点：子系统之间可以直接共享数据
+    缺点：
+     （1）子系统之间耦合性太高，其中一个升级其他都得升级
+     （2）系统扩展性差，开发困难，各个开发团队最后要整合到一起
+     （3）不能灵活进行分布式部署
+     面向服务设计架构（SOA）
+     优点：
+     （1）把系统拆分，使用接口通信，降低子系统之间的耦合度，增加功能时只需要增加子项目，调用其他系统的接口就可以了，功能升级方便
+     （2）由于SOA的组件性和优良的扩展性，使其可以根据不同的需求进行重新组合和构造
+     （3）可以灵活进行分布式部署
+     缺点：
+     （1）子系统之间交互需要使用远程通信
+     （2）接口开发增加工作量
+
